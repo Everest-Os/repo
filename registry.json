@@ -12,10 +12,19 @@
   ],
   "extensions": [
     {
-      "uuid": "sample-plugin@everest-os",
-      "name": "Sample Plugin",
-      "description": "A basic hello world extension from the online repository.",
+      "uuid": "sample-applet@everest-os",
+      "name": "Sample Applet",
+      "description": "A basic panel applet from the online repository.",
       "type": "applets",
+      "icon": "plugin",
+      "author": "everest-os",
+      "rating": 5.0
+    },
+    {
+      "uuid": "sample-desklet@everest-os",
+      "name": "Sample Desklet",
+      "description": "A basic desktop widget from the online repository.",
+      "type": "desklets",
       "icon": "plugin",
       "author": "everest-os",
       "rating": 5.0
