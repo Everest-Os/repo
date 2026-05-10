@@ -1,12 +1,11 @@
-function init(imports) {
-  return new SampleDesklet(imports);
+function main(metadata, deskletId) {
+  return new SampleDesklet(metadata, deskletId);
 }
 
 class SampleDesklet {
-  constructor(imports) {
+  constructor(metadata, deskletId) {
     this.uuid = "sample-desklet@everest-os";
-    this.iconHelper = imports.iconHelper;
-
+    
     this.el = document.createElement('div');
     this.el.style.position = 'absolute';
     this.el.style.top = '100px';

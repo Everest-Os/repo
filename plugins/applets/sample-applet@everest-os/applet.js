@@ -1,12 +1,11 @@
-function init(imports) {
-  return new SampleApplet(imports);
+function main(metadata, orientation, panel_height, instance_id) {
+  return new SampleApplet(metadata, orientation, panel_height, instance_id);
 }
 
 class SampleApplet {
-  constructor(imports) {
+  constructor(metadata, orientation, panel_height, instance_id) {
     this.uuid = "sample-applet@everest-os";
-    this.iconHelper = imports.iconHelper;
-
+    
     this.el = document.createElement('div');
     this.el.className = 'panel-button';
     this.el.style.display = 'flex';
