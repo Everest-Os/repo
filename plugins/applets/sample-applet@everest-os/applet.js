@@ -1,4 +1,4 @@
-export function init(imports) {
+function init(imports) {
   return new SampleApplet(imports);
 }
 
