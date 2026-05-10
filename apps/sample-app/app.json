@@ -1,0 +1,10 @@
+{
+  "id": "sample-app",
+  "name": "Sample Application",
+  "description": "A basic hello world application from the online repository.",
+  "category": "Utility",
+  "icon": "application",
+  "author": "everest os",
+  "rating": 5.0,
+  "version": "1.0.0"
+}

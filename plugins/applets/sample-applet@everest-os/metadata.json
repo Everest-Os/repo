@@ -1,0 +1,9 @@
+{
+  "uuid": "sample-applet@everest-os",
+  "name": "Sample Applet",
+  "description": "A basic panel applet from the online repository.",
+  "version": "1.0.0",
+  "author": "everest-os",
+  "type": "applets",
+  "icon": "plugin"
+}

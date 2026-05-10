@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "id": "sample-app",
+      "name": "Sample Application",
+      "description": "A basic hello world application from the online repository.",
+      "category": "Utility",
+      "icon": "application",
+      "author": "everest-os",
+      "rating": 5.0
+    }
+  ],
+  "extensions": [
+    {
+      "uuid": "sample-plugin@everest-os",
+      "name": "Sample Plugin",
+      "description": "A basic hello world extension from the online repository.",
+      "type": "applets",
+      "icon": "plugin",
+      "author": "everest-os",
+      "rating": 5.0
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "uuid": "sample-desklet@everest-os",
+  "name": "Sample Desklet",
+  "description": "A basic desktop widget from the online repository.",
+  "version": "1.0.0",
+  "author": "everest-os",
+  "type": "desklets",
+  "icon": "plugin"
+}

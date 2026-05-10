@@ -1,0 +1,72 @@
+name: Package EverestOS Apps and Plugins
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/**'
+      - 'plugins/**'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Package Apps and Plugins
+        run: |
+          echo "Packaging EverestOS Applications..."
+          if [ -d "apps" ]; then
+            for app_dir in apps/*/; do
+              if [ -d "$app_dir" ]; then
+                app_name=$(basename "$app_dir")
+                echo "Packaging App: $app_name"
+                cd "$app_dir"
+                # Remove old bundle
+                rm -f bundle.zip
+                # Zip everything except bundle.zip
+                zip -r bundle.zip . -x "bundle.zip"
+                cd ../../
+              fi
+            done
+          fi
+
+          echo "Packaging EverestOS Plugins..."
+          if [ -d "plugins" ]; then
+            for plugin_type in plugins/*/; do
+              if [ -d "$plugin_type" ]; then
+                type_name=$(basename "$plugin_type")
+                for plugin_dir in "$plugin_type"*/; do
+                  if [ -d "$plugin_dir" ]; then
+                    plugin_name=$(basename "$plugin_dir")
+                    echo "Packaging Plugin ($type_name): $plugin_name"
+                    cd "$plugin_dir"
+                    rm -f bundle.zip
+                    zip -r bundle.zip . -x "bundle.zip"
+                    cd ../../../
+                  fi
+                done
+              fi
+            done
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "apps/**/bundle.zip" "plugins/**/bundle.zip" || true
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(ci): auto-package apps and plugins [skip ci]"
+            git push
+          fi
