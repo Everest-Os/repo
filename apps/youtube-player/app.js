@@ -221,43 +221,7 @@ export async function launch(ctx, options = {}) {
   const VIDEOS_FILE_PATH = '~/Videos/videos.yt';
   let categorizedVideos = [];
 
-  const DEFAULT_VIDEOS = [
-    {
-      "category": "Music & Chill",
-      "videos": [
-        { "id": "jfKfPfyJRdk", "title": "Lofi Girl - chill lo-fi beats to relax/study to" },
-        { "id": "yKNxeF4KxyY", "title": "Coldplay - Yellow (Official Video)" },
-        { "id": "Zi_XLOBDo_Y", "title": "Michael Jackson - Billie Jean" },
-        { "id": "dQw4w9WgXcQ", "title": "Rick Astley - Never Gonna Give You Up" },
-        { "id": "9jK-NcRmVcw", "title": "Europe - The Final Countdown" }
-      ]
-    },
-    {
-      "category": "Education & Science",
-      "videos": [
-        { "id": "UBVV8pch1dM", "title": "Veritasium - The Science of Thinking" },
-        { "id": "JtUdnXJzZtQ", "title": "Kurzgesagt - What is Life?" },
-        { "id": "aircAruvnKk", "title": "3Blue1Brown - But what is a neural network?" },
-        { "id": "R1CYSVDkX2U", "title": "TED-Ed - The Infinite Hotel Paradox" }
-      ]
-    },
-    {
-      "category": "Technology",
-      "videos": [
-        { "id": "dtp6b76pMak", "title": "Apple Vision Pro Review" },
-        { "id": "fn3KzHyWey8", "title": "Boston Dynamics - Do You Love Me?" },
-        { "id": "tF4DML7FIWk", "title": "Linus Tech Tips - Building a PC" }
-      ]
-    },
-    {
-      "category": "Entertainment & Shorts",
-      "videos": [
-        { "id": "aqz-KE-bpKQ", "title": "Big Buck Bunny - Blender Open Movie" },
-        { "id": "Dd7FixvoKBw", "title": "Key & Peele - Substitute Teacher" },
-        { "id": "iV2Vi5ofj58", "title": "Monty Python - Ministry of Silly Walks" }
-      ]
-    }
-  ];
+
 
   const loadVideosList = async () => {
     try {
@@ -275,8 +239,34 @@ export async function launch(ctx, options = {}) {
     try {
       await vfs.mkdir('~/Videos');
     } catch (err) {}
-    categorizedVideos = DEFAULT_VIDEOS;
-    await vfs.writeFile(VIDEOS_FILE_PATH, JSON.stringify(DEFAULT_VIDEOS, null, 2));
+    
+    // First try local VFS extraction from installation
+    try {
+      const bundledPath = '~/.local/share/applications/youtube-player/videos.yt';
+      if (await vfs.exists(bundledPath)) {
+        const text = await vfs.readFile(bundledPath);
+        categorizedVideos = JSON.parse(text);
+        await vfs.writeFile(VIDEOS_FILE_PATH, text);
+        return;
+      }
+    } catch(e) {}
+
+    // Then try GitHub fallback if not installed via zip
+    try {
+      // Hardcoded fallback since REPO_BASE is not globally exported
+      const repoBase = 'https://raw.githubusercontent.com/Everest-Os/repo/main';
+      const res = await fetch(`${repoBase}/apps/youtube-player/videos.yt`);
+      if (res.ok) {
+        const text = await res.text();
+        categorizedVideos = JSON.parse(text);
+        await vfs.writeFile(VIDEOS_FILE_PATH, text);
+        return;
+      }
+    } catch (e) {
+      console.warn('Failed to fetch bundled videos.yt', e);
+    }
+    
+    categorizedVideos = [];
   };
 
   const playVideo = (videoId, title = 'YouTube Video') => {
