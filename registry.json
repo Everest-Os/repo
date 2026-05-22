@@ -5,7 +5,7 @@
       "name": "Sample Application",
       "description": "A basic hello world application from the online repository.",
       "category": "Utility",
-      "icon": "application",
+      "icon": "application,📥",
       "author": "everest-os",
       "rating": 5.0
     },
@@ -14,7 +14,7 @@
       "name": "Everest Paint",
       "description": "A feature-rich drawing and painting studio.",
       "category": "Graphics",
-      "icon": "paint",
+      "icon": "paint,🎨",
       "author": "everest-os",
       "rating": 4.8
     },
@@ -23,7 +23,7 @@
       "name": "Cyber Snake",
       "description": "Neon-themed cyberpunk snake game with retro synth audio.",
       "category": "Games",
-      "icon": "cyber-snake",
+      "icon": "cyber-snake,🐍",
       "author": "everest-os",
       "rating": 4.8
     },
@@ -32,7 +32,7 @@
       "name": "Neon Tetris",
       "description": "Sleek falling block puzzle game with neon visual style and sounds.",
       "category": "Games",
-      "icon": "neon-tetris",
+      "icon": "neon-tetris,🧩",
       "author": "everest-os",
       "rating": 4.9
     },
@@ -41,7 +41,7 @@
       "name": "Web Arcade",
       "description": "Play classic retro games (Pacman, Hextris, 2048) or embed any web game.",
       "category": "Games",
-      "icon": "web-arcade",
+      "icon": "web-arcade,🕹️",
       "author": "everest-os",
       "rating": 4.7
     },
@@ -50,7 +50,7 @@
       "name": "YouTube Cinematic",
       "description": "Watch and curate your favorite YouTube videos in a distraction-free cinematic player.",
       "category": "Multimedia",
-      "icon": "youtube-player",
+      "icon": "youtube-player,▶️",
       "author": "everest-os",
       "rating": 4.7
     }
@@ -61,7 +61,7 @@
       "name": "Sample Applet",
       "description": "A basic panel applet from the online repository.",
       "type": "applets",
-      "icon": "plugin",
+      "icon": "plugin,🧩",
       "author": "everest-os",
       "rating": 5.0
     },
@@ -70,7 +70,7 @@
       "name": "Sample Desklet",
       "description": "A basic desktop widget from the online repository.",
       "type": "desklets",
-      "icon": "plugin",
+      "icon": "plugin,🧩",
       "author": "everest-os",
       "rating": 5.0
     }
