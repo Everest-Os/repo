@@ -194,8 +194,11 @@ export async function launch(ctx, options = {}) {
 
   const loadSettings = async () => {
     try {
-      const data = await vfs.readFile(CONFIG_PATH);
-      store = JSON.parse(data);
+      const exists = await vfs.exists(CONFIG_PATH);
+      if (exists) {
+        const data = await vfs.readFile(CONFIG_PATH);
+        store = JSON.parse(data);
+      }
     } catch (e) {
       // First run or default
     }
@@ -260,19 +263,22 @@ export async function launch(ctx, options = {}) {
 
   const loadVideosList = async () => {
     try {
-      const data = await vfs.readFile(VIDEOS_FILE_PATH);
-      categorizedVideos = JSON.parse(data);
-      if (!Array.isArray(categorizedVideos)) {
-        throw new Error('Not an array');
+      const exists = await vfs.exists(VIDEOS_FILE_PATH);
+      if (exists) {
+        const data = await vfs.readFile(VIDEOS_FILE_PATH);
+        categorizedVideos = JSON.parse(data);
+        if (Array.isArray(categorizedVideos)) {
+          return;
+        }
       }
-    } catch (e) {
-      // Create path and file if missing or invalid
-      try {
-        await vfs.mkdir('~/Videos');
-      } catch (err) {}
-      categorizedVideos = DEFAULT_VIDEOS;
-      await vfs.writeFile(VIDEOS_FILE_PATH, JSON.stringify(DEFAULT_VIDEOS, null, 2));
-    }
+    } catch (e) {}
+
+    // Create path and file if missing or invalid
+    try {
+      await vfs.mkdir('~/Videos');
+    } catch (err) {}
+    categorizedVideos = DEFAULT_VIDEOS;
+    await vfs.writeFile(VIDEOS_FILE_PATH, JSON.stringify(DEFAULT_VIDEOS, null, 2));
   };
 
   const playVideo = (videoId, title = 'YouTube Video') => {
