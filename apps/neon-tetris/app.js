@@ -3,6 +3,7 @@ export async function launch(ctx, options = {}) {
   const { IconHelper, showSystemDialog } = window.osAPI;
 
   const content = document.createElement('div');
+  content.tabIndex = 0;
   content.style.cssText = `
     height: 100%;
     display: flex;
@@ -13,7 +14,10 @@ export async function launch(ctx, options = {}) {
     user-select: none;
     position: relative;
     overflow: hidden;
+    outline: none;
   `;
+  content.addEventListener('click', () => content.focus());
+  setTimeout(() => content.focus(), 100);
 
   content.innerHTML = `
     <!-- Top Neon Header -->

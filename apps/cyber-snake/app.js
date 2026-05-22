@@ -3,6 +3,7 @@ export async function launch(ctx, options = {}) {
   const { IconHelper, showSystemDialog } = window.osAPI;
 
   const content = document.createElement('div');
+  content.tabIndex = 0;
   content.style.cssText = `
     height: 100%;
     display: flex;
@@ -13,7 +14,10 @@ export async function launch(ctx, options = {}) {
     user-select: none;
     position: relative;
     overflow: hidden;
+    outline: none;
   `;
+  content.addEventListener('click', () => content.focus());
+  setTimeout(() => content.focus(), 100);
 
   content.innerHTML = `
     <!-- Top Neon Header -->
@@ -158,6 +162,7 @@ export async function launch(ctx, options = {}) {
   let food = {};
   let direction = 'right';
   let nextDirection = 'right';
+  let lastMovedDirection = 'right';
   let score = 0;
   let gameOver = false;
   let isPaused = false;
@@ -174,6 +179,7 @@ export async function launch(ctx, options = {}) {
     ];
     direction = 'right';
     nextDirection = 'right';
+    lastMovedDirection = 'right';
     score = 0;
     gameOver = false;
     isPaused = false;
@@ -210,10 +216,10 @@ export async function launch(ctx, options = {}) {
 
     if (isPaused) return;
 
-    if ((keys['ArrowUp'] || keys['w']) && direction !== 'down') nextDirection = 'up';
-    else if ((keys['ArrowDown'] || keys['s']) && direction !== 'up') nextDirection = 'down';
-    else if ((keys['ArrowLeft'] || keys['a']) && direction !== 'right') nextDirection = 'left';
-    else if ((keys['ArrowRight'] || keys['d']) && direction !== 'left') nextDirection = 'right';
+    if ((keys['ArrowUp'] || keys['w']) && lastMovedDirection !== 'down') nextDirection = 'up';
+    else if ((keys['ArrowDown'] || keys['s']) && lastMovedDirection !== 'up') nextDirection = 'down';
+    else if ((keys['ArrowLeft'] || keys['a']) && lastMovedDirection !== 'right') nextDirection = 'left';
+    else if ((keys['ArrowRight'] || keys['d']) && lastMovedDirection !== 'left') nextDirection = 'right';
 
     direction = nextDirection;
 
@@ -222,6 +228,8 @@ export async function launch(ctx, options = {}) {
     else if (direction === 'down') head.y++;
     else if (direction === 'left') head.x--;
     else if (direction === 'right') head.x++;
+
+    lastMovedDirection = direction;
 
     const cols = canvas.width / 20;
     const rows = canvas.height / 20;

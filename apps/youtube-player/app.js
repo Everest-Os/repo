@@ -215,15 +215,65 @@ export async function launch(ctx, options = {}) {
     return (match && match[2].length === 11) ? match[2] : null;
   };
 
-  // Curated list
-  const CURATED_VIDEOS = [
-    { id: 'jfKfPfyJRdk', title: 'Lofi Girl - Chill Lofi Beats to study/relax', category: 'Lofi Beats' },
-    { id: '5qap5aO4i9A', title: 'Lofi Hip Hop Radio - Beats to Study/Relax to', category: 'Lofi Beats' },
-    { id: '4xDzrJKXOOY', title: 'Synthwave Radio - Chill synth / retrowave mix', category: 'Synthwave' },
-    { id: 'MVPTGnggObY', title: 'RETROWAVE MIX - Best Outrun / Cyberpunk beats', category: 'Synthwave' },
-    { id: 'w3Z_GZz-T_8', title: 'Planet Earth Cinematic Chill Ambient Journey', category: 'Ambient' },
-    { id: 'dQw4w9WgXcQ', title: 'EverestOS Developer Showcase & Guides', category: 'Guides' }
+  const VIDEOS_FILE_PATH = '~/Videos/videos.yt';
+  let categorizedVideos = [];
+
+  const DEFAULT_VIDEOS = [
+    {
+      "category": "Music",
+      "videos": [
+        { "id": "dQw4w9WgXcQ", "title": "Rick Astley - Never Gonna Give You Up" },
+        { "id": "jfKfPfyJRdk", "title": "Lofi Girl - Chill Lofi Beats to study/relax" },
+        { "id": "MVPTGnggObY", "title": "RETROWAVE MIX - Best Outrun / Cyberpunk beats" },
+        { "id": "yKNxeF4KxyY", "title": "Coldplay - Yellow (Official Video)" },
+        { "id": "Zi_XLOBDo_Y", "title": "Michael Jackson - Billie Jean (Official Video)" }
+      ]
+    },
+    {
+      "category": "Movies",
+      "videos": [
+        { "id": "aqz-KE-bpKQ", "title": "Big Buck Bunny - Blender Open Movie" },
+        { "id": "eRsGyy64086", "title": "Sintel - Blender Open Movie" },
+        { "id": "R6MlUcmO1A0", "title": "Tears of Steel - Blender Sci-Fi Short Film" },
+        { "id": "TcMBFSGVi1c", "title": "Marvel Studios' Avengers: Endgame - Official Trailer" }
+      ]
+    },
+    {
+      "category": "Comedy",
+      "videos": [
+        { "id": "Dd7FixvoKBw", "title": "Key & Peele - Substitute Teacher" },
+        { "id": "fQ3w_S1V2d0", "title": "Key & Peele - Aerobics Meltdown" },
+        { "id": "hSAOLB_c61A", "title": "Mr. Bean - Classic Comedy Live Sketch" },
+        { "id": "iV2Vi5ofj58", "title": "Monty Python - Ministry of Silly Walks" }
+      ]
+    },
+    {
+      "category": "Misc",
+      "videos": [
+        { "id": "dtp6b76pMak", "title": "Marques Brownlee - Apple Vision Pro Review: A Mind-Bending Messy Masterpiece" },
+        { "id": "fn3KzHyWey8", "title": "Boston Dynamics - Do You Love Me?" },
+        { "id": "UBVV8pch1dM", "title": "Veritasium - The Science of Thinking" },
+        { "id": "JyECrGp-F5U", "title": "Kurzgesagt - What If We Detonated All Nuclear Bombs at Once?" }
+      ]
+    }
   ];
+
+  const loadVideosList = async () => {
+    try {
+      const data = await vfs.readFile(VIDEOS_FILE_PATH);
+      categorizedVideos = JSON.parse(data);
+      if (!Array.isArray(categorizedVideos)) {
+        throw new Error('Not an array');
+      }
+    } catch (e) {
+      // Create path and file if missing or invalid
+      try {
+        await vfs.mkdir('~/Videos');
+      } catch (err) {}
+      categorizedVideos = DEFAULT_VIDEOS;
+      await vfs.writeFile(VIDEOS_FILE_PATH, JSON.stringify(DEFAULT_VIDEOS, null, 2));
+    }
+  };
 
   const playVideo = (videoId, title = 'YouTube Video') => {
     activeVideoId = videoId;
@@ -332,35 +382,57 @@ export async function launch(ctx, options = {}) {
 
   const renderDiscover = () => {
     ytBody.innerHTML = `
-      <h2 style="margin: 0 0 16px 0; font-size: 18px; font-weight: 700; color: #fff;">Discover Curated Streams</h2>
+      <h2 style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700; color: #fff;">Discover Curated Streams</h2>
+      <p style="font-size: 11px; color: #71717a; margin: 0 0 20px 0;">
+        Video list loaded dynamically from VFS <span style="font-family: monospace; color: #ff3e3e;">~/Videos/videos.yt</span>
+      </p>
       
-      <!-- Video Grid -->
-      <div style="
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-      " id="yt-curated-grid"></div>
+      <div id="yt-categories-container"></div>
     `;
 
-    const grid = ytBody.querySelector('#yt-curated-grid');
-    CURATED_VIDEOS.forEach(video => {
-      const card = document.createElement('div');
-      card.className = 'yt-card';
-      card.innerHTML = `
-        <div style="position: relative; aspect-ratio: 16/9; background: #000;">
-          <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" style="width:100%; height:100%; object-fit:cover;" />
-          <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); color:#fff; font-size:10px; padding:2px 6px; border-radius:4px; font-family: monospace;">LIVE</div>
-        </div>
-        <div style="padding: 12px;">
-          <div style="font-weight: 600; font-size: 13px; color: #fff; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 36px;">
-            ${video.title}
-          </div>
-          <div style="font-size: 11px; color: #71717a; margin-top: 6px;">Category: ${video.category}</div>
-        </div>
+    const container = ytBody.querySelector('#yt-categories-container');
+    categorizedVideos.forEach(cat => {
+      const catSection = document.createElement('div');
+      catSection.style.marginBottom = '28px';
+      catSection.innerHTML = `
+        <h3 style="
+          margin: 0 0 12px 0;
+          font-size: 13px;
+          font-weight: 700;
+          color: #ff3e3e;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          border-left: 3px solid #ff3e3e;
+          padding-left: 8px;
+        ">${cat.category}</h3>
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: 16px;
+        " class="category-grid"></div>
       `;
 
-      card.onclick = () => playVideo(video.id, video.title);
-      grid.appendChild(card);
+      const grid = catSection.querySelector('.category-grid');
+      (cat.videos || []).forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'yt-card';
+        card.innerHTML = `
+          <div style="position: relative; aspect-ratio: 16/9; background: #000;">
+            <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="padding: 10px;">
+            <div style="font-weight: 600; font-size: 12px; color: #fff; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 34px;">
+              ${video.title}
+            </div>
+            <div style="font-size: 10px; color: #71717a; margin-top: 4px; font-family: monospace;">ID: ${video.id}</div>
+          </div>
+        `;
+
+        card.onclick = () => playVideo(video.id, video.title);
+        grid.appendChild(card);
+      });
+
+      container.appendChild(catSection);
     });
   };
 
@@ -563,7 +635,15 @@ export async function launch(ctx, options = {}) {
       urlInput.value = '';
     } else {
       // Text search: search the curated list or Rick Roll
-      const matches = CURATED_VIDEOS.filter(v => v.title.toLowerCase().includes(query.toLowerCase()));
+      // Text search: search the dynamic categorized list
+      let matches = [];
+      categorizedVideos.forEach(cat => {
+        (cat.videos || []).forEach(v => {
+          if (v.title.toLowerCase().includes(query.toLowerCase())) {
+            matches.push(v);
+          }
+        });
+      });
       if (matches.length > 0) {
         playVideo(matches[0].id, matches[0].title);
       } else {
@@ -573,7 +653,7 @@ export async function launch(ctx, options = {}) {
           type: 'confirm',
           confirmText: 'Play Demo',
           onConfirm: () => {
-            playVideo('dQw4w9WgXcQ', 'EverestOS Tech Tour');
+            playVideo('dQw4w9WgXcQ', 'Rick Astley - Never Gonna Give You Up');
           }
         });
       }
@@ -586,9 +666,10 @@ export async function launch(ctx, options = {}) {
     if (e.key === 'Enter') triggerPlay();
   };
 
-  // Load state and display Discover
+  // Load state, video list, and display Discover
   (async () => {
     await loadSettings();
+    await loadVideosList();
     setView('discover');
   })();
 }

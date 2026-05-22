@@ -202,11 +202,11 @@ export async function launch(ctx, options = {}) {
     } else if (gameId === 'hextris') {
       titleDisplay.textContent = 'Hextris';
       iframe.style.display = 'block';
-      iframe.src = 'https://hextris.io/';
+      iframe.src = 'https://hextris.github.io/hextris/';
     } else if (gameId === 'play2048') {
       titleDisplay.textContent = '2048 Neon';
       iframe.style.display = 'block';
-      iframe.src = 'https://play2048.co/';
+      iframe.src = 'https://gabrielecirulli.github.io/2048/';
     } else if (gameId === 'custom') {
       titleDisplay.textContent = 'Custom Web Game';
       customPrompt.style.display = 'flex';
