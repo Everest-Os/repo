@@ -1,0 +1,27 @@
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14" />
+      <stop offset="100%" stop-color="#020205" />
+    </linearGradient>
+    <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffff" />
+      <stop offset="100%" stop-color="#00a3ff" />
+    </linearGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#bgGrad)" stroke="#1a1a2e" stroke-width="2" />
+  <!-- Neon Grid Overlay -->
+  <path d="M16,0 V64 M32,0 V64 M48,0 V64 M0,16 H64 M0,32 H64 M0,48 H64" stroke="#101026" stroke-width="1" />
+  <!-- Neon Apple/Food -->
+  <circle cx="48" cy="20" r="4.5" fill="#ff007f" filter="url(#glow)" />
+  <path d="M48,15.5 C49,13 47,13 47,13" stroke="#39ff14" stroke-width="1.5" fill="none" />
+  <!-- Neon Snake -->
+  <path d="M16,48 H32 V32 H48 V20" fill="none" stroke="url(#snakeGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+  <!-- Snake Eyes -->
+  <circle cx="48" cy="18" r="1" fill="#ffffff" />
+</svg>

@@ -1,0 +1,10 @@
+{
+  "id": "cyber-snake",
+  "name": "Cyber Snake",
+  "description": "Neon-themed cyberpunk snake game with retro synth audio.",
+  "category": "Games",
+  "icon": "cyber-snake",
+  "author": "everest-os",
+  "rating": 4.8,
+  "version": "1.0.0"
+}

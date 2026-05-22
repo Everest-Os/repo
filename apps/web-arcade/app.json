@@ -1,0 +1,10 @@
+{
+  "id": "web-arcade",
+  "name": "Web Arcade",
+  "description": "Play classic retro games (Pacman, Hextris, 2048) or embed any web game.",
+  "category": "Games",
+  "icon": "web-arcade",
+  "author": "everest-os",
+  "rating": 4.7,
+  "version": "1.0.0"
+}

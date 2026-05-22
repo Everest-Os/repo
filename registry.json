@@ -8,6 +8,51 @@
       "icon": "application",
       "author": "everest-os",
       "rating": 5.0
+    },
+    {
+      "id": "paint",
+      "name": "Everest Paint",
+      "description": "A feature-rich drawing and painting studio.",
+      "category": "Graphics",
+      "icon": "paint",
+      "author": "everest-os",
+      "rating": 4.8
+    },
+    {
+      "id": "cyber-snake",
+      "name": "Cyber Snake",
+      "description": "Neon-themed cyberpunk snake game with retro synth audio.",
+      "category": "Games",
+      "icon": "cyber-snake",
+      "author": "everest-os",
+      "rating": 4.8
+    },
+    {
+      "id": "neon-tetris",
+      "name": "Neon Tetris",
+      "description": "Sleek falling block puzzle game with neon visual style and sounds.",
+      "category": "Games",
+      "icon": "neon-tetris",
+      "author": "everest-os",
+      "rating": 4.9
+    },
+    {
+      "id": "web-arcade",
+      "name": "Web Arcade",
+      "description": "Play classic retro games (Pacman, Hextris, 2048) or embed any web game.",
+      "category": "Games",
+      "icon": "web-arcade",
+      "author": "everest-os",
+      "rating": 4.7
+    },
+    {
+      "id": "youtube-player",
+      "name": "YouTube Cinematic",
+      "description": "Watch and curate your favorite YouTube videos in a distraction-free cinematic player.",
+      "category": "Multimedia",
+      "icon": "youtube-player",
+      "author": "everest-os",
+      "rating": 4.7
     }
   ],
   "extensions": [

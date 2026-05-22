@@ -1,0 +1,10 @@
+{
+  "id": "youtube-player",
+  "name": "YouTube Cinematic",
+  "description": "Watch and curate your favorite YouTube videos in a distraction-free cinematic player.",
+  "category": "Multimedia",
+  "icon": "youtube-player",
+  "author": "everest-os",
+  "rating": 4.7,
+  "version": "1.0.0"
+}

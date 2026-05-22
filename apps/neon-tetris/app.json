@@ -1,0 +1,10 @@
+{
+  "id": "neon-tetris",
+  "name": "Neon Tetris",
+  "description": "Sleek falling block puzzle game with neon visual style and sounds.",
+  "category": "Games",
+  "icon": "neon-tetris",
+  "author": "everest-os",
+  "rating": 4.9,
+  "version": "1.0.0"
+}

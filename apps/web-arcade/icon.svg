@@ -1,0 +1,30 @@
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14061a" />
+      <stop offset="100%" stop-color="#05010a" />
+    </linearGradient>
+    <filter id="neonPink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#bgGrad)" stroke="#220b33" stroke-width="2" />
+  
+  <!-- Arcade Cabinet Outline (Retro-futuristic) -->
+  <path d="M16,8 H48 L52,16 L48,22 V42 L52,46 V56 H12 V46 L16,42 V22 L12,16 Z" fill="#1b122c" stroke="#ff007f" stroke-width="2" filter="url(#neonPink)" />
+  
+  <!-- Screen Area -->
+  <rect x="20" y="16" width="24" height="18" rx="2" fill="#000000" stroke="#00f0ff" stroke-width="1.5" />
+  
+  <!-- Screen Graphic (Little Space Invader or Pacman) -->
+  <rect x="26" y="24" width="4" height="4" fill="#ff007f" />
+  <rect x="34" y="22" width="4" height="4" fill="#39ff14" />
+  
+  <!-- Controller Deck -->
+  <line x1="16" y1="42" x2="48" y2="42" stroke="#ff007f" stroke-width="2" />
+  <circle cx="26" cy="46" r="2.5" fill="#00f0ff" />
+  <circle cx="38" cy="46" r="2" fill="#ffff00" />
+  <circle cx="42" cy="46" r="2" fill="#ff007f" />
+</svg>
