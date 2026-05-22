@@ -223,40 +223,38 @@ export async function launch(ctx, options = {}) {
 
   const DEFAULT_VIDEOS = [
     {
-      "category": "Music",
+      "category": "Music & Chill",
       "videos": [
-        { "id": "dQw4w9WgXcQ", "title": "Rick Astley - Never Gonna Give You Up" },
-        { "id": "jfKfPfyJRdk", "title": "Lofi Girl - Chill Lofi Beats to study/relax" },
-        { "id": "MVPTGnggObY", "title": "RETROWAVE MIX - Best Outrun / Cyberpunk beats" },
+        { "id": "jfKfPfyJRdk", "title": "Lofi Girl - chill lo-fi beats to relax/study to" },
         { "id": "yKNxeF4KxyY", "title": "Coldplay - Yellow (Official Video)" },
-        { "id": "Zi_XLOBDo_Y", "title": "Michael Jackson - Billie Jean (Official Video)" }
+        { "id": "Zi_XLOBDo_Y", "title": "Michael Jackson - Billie Jean" },
+        { "id": "dQw4w9WgXcQ", "title": "Rick Astley - Never Gonna Give You Up" },
+        { "id": "9jK-NcRmVcw", "title": "Europe - The Final Countdown" }
       ]
     },
     {
-      "category": "Movies",
+      "category": "Education & Science",
+      "videos": [
+        { "id": "UBVV8pch1dM", "title": "Veritasium - The Science of Thinking" },
+        { "id": "JtUdnXJzZtQ", "title": "Kurzgesagt - What is Life?" },
+        { "id": "aircAruvnKk", "title": "3Blue1Brown - But what is a neural network?" },
+        { "id": "R1CYSVDkX2U", "title": "TED-Ed - The Infinite Hotel Paradox" }
+      ]
+    },
+    {
+      "category": "Technology",
+      "videos": [
+        { "id": "dtp6b76pMak", "title": "Apple Vision Pro Review" },
+        { "id": "fn3KzHyWey8", "title": "Boston Dynamics - Do You Love Me?" },
+        { "id": "tF4DML7FIWk", "title": "Linus Tech Tips - Building a PC" }
+      ]
+    },
+    {
+      "category": "Entertainment & Shorts",
       "videos": [
         { "id": "aqz-KE-bpKQ", "title": "Big Buck Bunny - Blender Open Movie" },
-        { "id": "eRsGyy64086", "title": "Sintel - Blender Open Movie" },
-        { "id": "R6MlUcmO1A0", "title": "Tears of Steel - Blender Sci-Fi Short Film" },
-        { "id": "TcMBFSGVi1c", "title": "Marvel Studios' Avengers: Endgame - Official Trailer" }
-      ]
-    },
-    {
-      "category": "Comedy",
-      "videos": [
         { "id": "Dd7FixvoKBw", "title": "Key & Peele - Substitute Teacher" },
-        { "id": "fQ3w_S1V2d0", "title": "Key & Peele - Aerobics Meltdown" },
-        { "id": "hSAOLB_c61A", "title": "Mr. Bean - Classic Comedy Live Sketch" },
         { "id": "iV2Vi5ofj58", "title": "Monty Python - Ministry of Silly Walks" }
-      ]
-    },
-    {
-      "category": "Misc",
-      "videos": [
-        { "id": "dtp6b76pMak", "title": "Marques Brownlee - Apple Vision Pro Review: A Mind-Bending Messy Masterpiece" },
-        { "id": "fn3KzHyWey8", "title": "Boston Dynamics - Do You Love Me?" },
-        { "id": "UBVV8pch1dM", "title": "Veritasium - The Science of Thinking" },
-        { "id": "JyECrGp-F5U", "title": "Kurzgesagt - What If We Detonated All Nuclear Bombs at Once?" }
       ]
     }
   ];
@@ -424,7 +422,7 @@ export async function launch(ctx, options = {}) {
         card.className = 'yt-card';
         card.innerHTML = `
           <div style="position: relative; aspect-ratio: 16/9; background: #000;">
-            <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" style="width:100%; height:100%; object-fit:cover;" />
+            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" style="width:100%; height:100%; object-fit:cover;" />
           </div>
           <div style="padding: 10px;">
             <div style="font-weight: 600; font-size: 12px; color: #fff; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 34px;">
@@ -509,7 +507,7 @@ export async function launch(ctx, options = {}) {
               border: 1px solid transparent;
             ">
               <div style="width: 24px; font-size:12px; color:#52525b; text-align:center;">${idx + 1}</div>
-              <img src="https://img.youtube.com/vi/${vid.id}/mqdefault.jpg" style="width:60px; aspect-ratio:16/9; object-fit:cover; border-radius:4px;" />
+              <img src="https://img.youtube.com/vi/${vid.id}/hqdefault.jpg" style="width:60px; aspect-ratio:16/9; object-fit:cover; border-radius:4px;" />
               <div style="flex:1; min-width:0;">
                 <div style="font-weight:600; font-size:13px; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${vid.title}</div>
               </div>
@@ -565,7 +563,7 @@ export async function launch(ctx, options = {}) {
               transition: all 0.2s;
               border: 1px solid transparent;
             ">
-              <img src="https://img.youtube.com/vi/${vid.id}/mqdefault.jpg" style="width:60px; aspect-ratio:16/9; object-fit:cover; border-radius:4px;" />
+              <img src="https://img.youtube.com/vi/${vid.id}/hqdefault.jpg" style="width:60px; aspect-ratio:16/9; object-fit:cover; border-radius:4px;" />
               <div style="flex:1; min-width:0;">
                 <div style="font-weight:600; font-size:13px; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${vid.title}</div>
                 <div style="font-size:11px; color:#71717a; margin-top:2px;">Watched ${new Date(vid.timestamp).toLocaleTimeString()}</div>
@@ -602,6 +600,51 @@ export async function launch(ctx, options = {}) {
     if (viewId === 'discover') renderDiscover();
     else if (viewId === 'playlists') renderPlaylists();
     else if (viewId === 'history') renderHistory();
+    else if (viewId === 'search') renderSearch();
+  };
+
+  let lastSearchResults = [];
+  let lastSearchQuery = '';
+
+  const renderSearch = () => {
+    ytBody.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin:0; font-size:18px; font-weight:700; color:#fff;">Search Results for "${lastSearchQuery}"</h2>
+      </div>
+      
+      ${lastSearchResults.length === 0 ? `
+        <div style="padding:40px; text-align:center; color:#71717a; font-size:13px;">No results found.</div>
+      ` : `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          ${lastSearchResults.map((vid, idx) => `
+            <div class="search-video-item" data-id="${vid.id}" data-title="${vid.title.replace(/"/g, '&quot;')}" style="
+              display: flex;
+              align-items: flex-start;
+              gap: 16px;
+              padding: 12px 16px;
+              background: #111113;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: all 0.2s;
+              border: 1px solid transparent;
+            ">
+              <img src="https://img.youtube.com/vi/${vid.id}/hqdefault.jpg" style="width:160px; aspect-ratio:16/9; object-fit:cover; border-radius:6px; flex-shrink: 0;" />
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:600; font-size:15px; color:#fff; margin-bottom:6px; line-height: 1.3;">${vid.title}</div>
+                <div style="font-size:12px; color:#a1a1aa; margin-bottom:4px;">${vid.author} • ${vid.publishedText || ''}</div>
+                <div style="font-size:11px; color:#71717a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${vid.description || ''}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `}
+    `;
+
+    ytBody.querySelectorAll('.search-video-item').forEach(item => {
+      item.onclick = () => playVideo(item.dataset.id, item.dataset.title);
+      item.onmouseenter = () => item.style.borderColor = 'rgba(255, 62, 62, 0.2)';
+      item.onmouseleave = () => item.style.borderColor = 'transparent';
+    });
   };
 
   // Nav Actions
@@ -630,8 +673,48 @@ export async function launch(ctx, options = {}) {
     });
   };
 
+  // APIs for live search (Invidious instances array)
+  const SEARCH_INSTANCES = [
+    'https://invidious.nerdvpn.de',
+    'https://inv.nadeko.net',
+    'https://invidious.f5.si',
+    'https://yt.chocolatemoo53.com',
+    'https://invidious.tiekoetter.com'
+  ];
+
+  const searchYouTubeLive = async (query) => {
+    // 1. Try Live Invidious API
+    for (const instance of SEARCH_INSTANCES) {
+      try {
+        const res = await fetch(`${instance}/api/v1/search?q=${encodeURIComponent(query)}`);
+        if (res.ok) {
+          const data = await res.json();
+          const videos = data.filter(d => d.type === 'video').map(v => ({
+            id: v.videoId,
+            title: v.title,
+            author: v.author,
+            publishedText: v.publishedText,
+            description: v.description
+          }));
+          if (videos.length > 0) return videos;
+        }
+      } catch (e) { } // Silent fallback
+    }
+
+    // 2. Fallback: Search the categorized VFS JSON list
+    let localMatches = [];
+    categorizedVideos.forEach(cat => {
+      (cat.videos || []).forEach(v => {
+        if (v.title.toLowerCase().includes(query.toLowerCase())) {
+          localMatches.push({ ...v, author: 'Curated List', description: 'Matched from local database' });
+        }
+      });
+    });
+    return localMatches;
+  };
+
   // Play URL Paste / Search Action
-  const triggerPlay = () => {
+  const triggerPlay = async () => {
     const query = urlInput.value.trim();
     if (!query) return;
 
@@ -639,32 +722,21 @@ export async function launch(ctx, options = {}) {
     if (parsedId) {
       playVideo(parsedId, 'Pasted Video');
       urlInput.value = '';
-    } else {
-      // Text search: search the curated list or Rick Roll
-      // Text search: search the dynamic categorized list
-      let matches = [];
-      categorizedVideos.forEach(cat => {
-        (cat.videos || []).forEach(v => {
-          if (v.title.toLowerCase().includes(query.toLowerCase())) {
-            matches.push(v);
-          }
-        });
-      });
-      if (matches.length > 0) {
-        playVideo(matches[0].id, matches[0].title);
-      } else {
-        showSystemDialog({
-          title: 'Direct Search',
-          message: `Could not extract video ID. Do you want to play default video or search YouTube directly?`,
-          type: 'confirm',
-          confirmText: 'Play Demo',
-          onConfirm: () => {
-            playVideo('dQw4w9WgXcQ', 'Rick Astley - Never Gonna Give You Up');
-          }
-        });
-      }
-      urlInput.value = '';
-    }
+      return;
+    } 
+
+    ytBody.innerHTML = `
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#a1a1aa; gap:16px;">
+        <div style="width:32px; height:32px; border:3px solid #ff3e3e; border-top-color:transparent; border-radius:50%; animation: spin 1s linear infinite;"></div>
+        Searching live YouTube...
+        <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+      </div>
+    `;
+
+    lastSearchQuery = query;
+    lastSearchResults = await searchYouTubeLive(query);
+    setView('search');
+    urlInput.value = '';
   };
 
   playBtn.onclick = triggerPlay;
