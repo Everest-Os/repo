@@ -2,36 +2,142 @@
   {
     "category": "Music & Chill",
     "videos": [
-      { "id": "jfKfPfyJRdk", "title": "Lofi Girl - chill lo-fi beats to relax/study to" },
-      { "id": "yKNxeF4KxyY", "title": "Coldplay - Yellow (Official Video)" },
-      { "id": "Zi_XLOBDo_Y", "title": "Michael Jackson - Billie Jean" },
-      { "id": "dQw4w9WgXcQ", "title": "Rick Astley - Never Gonna Give You Up" },
-      { "id": "9jK-NcRmVcw", "title": "Europe - The Final Countdown" }
+      {
+        "id": "Zi_XLOBDo_Y",
+        "title": "Michael Jackson - Billie Jean"
+      },
+      {
+        "id": "dQw4w9WgXcQ",
+        "title": "Rick Astley - Never Gonna Give You Up"
+      },
+      {
+        "id": "9jK-NcRmVcw",
+        "title": "Europe - The Final Countdown"
+      },
+      {
+        "id": "fJ9rUzIMcZQ",
+        "title": "Queen - Bohemian Rhapsody"
+      },
+      {
+        "id": "kJQP7kiw5Fk",
+        "title": "Luis Fonsi - Despacito ft. Daddy Yankee"
+      },
+      {
+        "id": "09R8_2nJtjg",
+        "title": "Maroon 5 - Sugar"
+      },
+      {
+        "id": "JGwWNGJdvx8",
+        "title": "Ed Sheeran - Shape of You"
+      },
+      {
+        "id": "y6120QOlsfU",
+        "title": "Darude - Sandstorm"
+      },
+      {
+        "id": "hT_nvWreIhg",
+        "title": "OneRepublic - Counting Stars"
+      },
+      {
+        "id": "K4DyBUG242c",
+        "title": "Cartoon - On & On (feat. Daniel Levi)"
+      }
+    ]
+  },
+  {
+    "category": "Bollywood",
+    "videos": [
+      {
+        "id": "PWyXe6fzsmM",
+        "title": "Bollywood 90's Romantic Songs | Video Jukebox | Hindi Love Songs"
+      },
+      {
+        "id": "xp5j2IHyTgs",
+        "title": "Kumar Sanu Hit Songs | 90s Superhit Hindi Romantic Songs | Sadabahar Song"
+      },
+      {
+        "id": "mDqooripK-o",
+        "title": "2000s Bollywood Hits | Audio Jukebox | Best Bollywood Songs"
+      },
+      {
+        "id": "8u1Bnxn9PTY",
+        "title": "Best Of 90s Hits Hindi Songs Collection | 90s Evergreen Songs"
+      },
+      {
+        "id": "SI3cjQISDqs",
+        "title": "90's Hits Hindi Songs | Pehla Nasha | Jaadu Teri Nazar | Tu Mile"
+      },
+      {
+        "id": "Umqb9KENgmk",
+        "title": "\"Tum Hi Ho\" Aashiqui 2 Full Song With Lyrics | Aditya Roy Kapur, Shraddha Kapoor"
+      },
+      {
+        "id": "jHNNMj5bNQw",
+        "title": "\"Kabira Full Song\" Yeh Jawaani Hai Deewani | Pritam | Ranbir Kapoor, Deepika Padukone"
+      }
     ]
   },
   {
     "category": "Education & Science",
     "videos": [
-      { "id": "UBVV8pch1dM", "title": "Veritasium - The Science of Thinking" },
-      { "id": "JtUdnXJzZtQ", "title": "Kurzgesagt - What is Life?" },
-      { "id": "aircAruvnKk", "title": "3Blue1Brown - But what is a neural network?" },
-      { "id": "R1CYSVDkX2U", "title": "TED-Ed - The Infinite Hotel Paradox" }
+      {
+        "id": "UBVV8pch1dM",
+        "title": "Veritasium - The Science of Thinking"
+      },
+      {
+        "id": "aircAruvnKk",
+        "title": "3Blue1Brown - But what is a neural network?"
+      },
+      {
+        "id": "hHW1oY26kxQ",
+        "title": "Kurzgesagt - What If We Detonated All Nuclear Bombs at Once?"
+      },
+      {
+        "id": "DPZzrlFCD_I",
+        "title": "Mark Rober - World's Largest Jello Pool- Can you swim in Jello?"
+      }
     ]
   },
   {
     "category": "Technology",
     "videos": [
-      { "id": "dtp6b76pMak", "title": "Apple Vision Pro Review" },
-      { "id": "fn3KzHyWey8", "title": "Boston Dynamics - Do You Love Me?" },
-      { "id": "tF4DML7FIWk", "title": "Linus Tech Tips - Building a PC" }
+      {
+        "id": "dtp6b76pMak",
+        "title": "Apple Vision Pro Review"
+      },
+      {
+        "id": "tF4DML7FIWk",
+        "title": "Linus Tech Tips - Building a PC"
+      },
+      {
+        "id": "sfyL4BswUeE",
+        "title": "Marques Brownlee - Smartphone Awards 2025!"
+      }
     ]
   },
   {
     "category": "Entertainment & Shorts",
     "videos": [
-      { "id": "aqz-KE-bpKQ", "title": "Big Buck Bunny - Blender Open Movie" },
-      { "id": "Dd7FixvoKBw", "title": "Key & Peele - Substitute Teacher" },
-      { "id": "iV2Vi5ofj58", "title": "Monty Python - Ministry of Silly Walks" }
+      {
+        "id": "aqz-KE-bpKQ",
+        "title": "Big Buck Bunny - Blender Open Movie"
+      },
+      {
+        "id": "Dd7FixvoKBw",
+        "title": "Key & Peele - Substitute Teacher"
+      },
+      {
+        "id": "2Vv-BfVoq4g",
+        "title": "MrBeast - I Survived 50 Hours In Antarctica"
+      },
+      {
+        "id": "0e3GPea1Tyg",
+        "title": "Dude Perfect - Real Life Trick Shots"
+      },
+      {
+        "id": "jNQXAC9IVRw",
+        "title": "Me at the zoo"
+      }
     ]
   }
 ]
